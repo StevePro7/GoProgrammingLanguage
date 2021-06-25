@@ -1,0 +1,31 @@
+readme
+25/06/2021
+
+findlinks2 does an HTTP GET on each URL, parses the result as HTML and prints the links within it
+
+Terminal
+go get golang.org/x/net/html
+go mod tidy
+
+
+OUTPUT
+go run .
+http://www.google.ie/imghp?hl=en&tab=wi
+http://maps.google.ie/maps?hl=en&tab=wl
+https://play.google.com/?hl=en&tab=w8
+http://www.youtube.com/?gl=IE&tab=w1
+https://news.google.com/?tab=wn
+https://mail.google.com/mail/?tab=wm
+https://drive.google.com/?tab=wo
+https://www.google.ie/intl/en/about/products?tab=wh
+http://www.google.ie/history/optout?hl=en
+/preferences?hl=en
+https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=http://www.google.com/&ec=GAZAAQ
+/advanced_search?hl=en-IE&authuser=0
+http://www.google.com/setprefs?sig=0_2fDZI2NYiv8h25wXeoI-7Kk04Xk%3D&hl=ga&source=homepage&sa=X&ved=0ahUKEwiiy5eI_rLxAhUIiFwKHZllCsQQ2ZgBCAU
+/intl/en/ads/
+http://www.google.ie/intl/en/services/
+/intl/en/about.html
+http://www.google.com/setprefdomain?prefdom=IE&prev=http://www.google.ie/&sig=K_W0QQHrkpipDGIVYYid98q85l5wU%3D
+/intl/en/policies/privacy/
+/intl/en/policies/terms/
