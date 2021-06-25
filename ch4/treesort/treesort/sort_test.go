@@ -1,6 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 package treesort_test
 
 import (
@@ -8,7 +5,7 @@ import (
 	"sort"
 	"testing"
 
-	"gopl.io/ch4/treesort"
+	"learning/treesort"
 )
 
 func TestSort(t *testing.T) {
@@ -16,6 +13,7 @@ func TestSort(t *testing.T) {
 	for i := range data {
 		data[i] = rand.Int() % 50
 	}
+
 	treesort.Sort(data)
 	if !sort.IntsAreSorted(data) {
 		t.Errorf("not sorted: %v", data)
