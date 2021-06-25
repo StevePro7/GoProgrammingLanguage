@@ -1,0 +1,7 @@
+readme
+25/06/2021
+
+go run .\main.go
+["one" "" "three"]
+["one" "three"]        
+["one" "three" "three"]
