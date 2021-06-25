@@ -1,0 +1,10 @@
+readme
+25/06/2021
+
+Initial cut used
+import . "net"
+
+but rec'd errow
+golang should not use dot imports
+
+so replaced w/ tmp "net" and OK

@@ -1,0 +1,19 @@
+readme
+25/06/2021
+
+https://riptutorial.com/go/example/31686/loading-and-saving-image
+
+
+Save to PNG
+f, err := os.Create("outimage.png")
+if err != nil {
+    // Handle error
+}
+defer f.Close()
+
+// Encode to `PNG` with `DefaultCompression` level
+// then save to file
+err = png.Encode(f, img)
+if err != nil {
+    // Handle error
+}
