@@ -20,7 +20,6 @@ func main() {
 		if err == io.EOF {
 			break
 		}
-
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "charcount: %v\n", err)
 			os.Exit(1)
@@ -32,7 +31,6 @@ func main() {
 		counts[r]++
 		utflen[n]++
 	}
-
 	fmt.Printf("rune\tcount\n")
 	for c, n := range counts {
 		fmt.Printf("%q\t%d\n", c, n)
