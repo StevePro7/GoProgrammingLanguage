@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+
+	"learning/tempconv"
+)
+
+var temp = tempconv.CelsiusFlag("temp", 20.0, "the temperature")
 
 func main() {
-	fmt.Println("Hello there")
+
+	flag.Parse()
+	fmt.Println(*temp)
 }
