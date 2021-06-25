@@ -1,0 +1,10 @@
+readme
+25/06/2021
+
+go run main.go
+
+Terminal
+curl http://localhost:3000/list
+
+curl http://localhost:3000/price?item=shoes
+curl http://localhost:3000/price?item=socks
