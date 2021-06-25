@@ -1,0 +1,10 @@
+readme
+25/06/2021
+
+
+en
+
+1
+[1 2]
+
+panic: assignment to entry in nil map
