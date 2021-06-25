@@ -1,7 +1,8 @@
 readme
 25/06/2021
 
-Title1 prints the title of an HTML document specified by a URL
+Title2 prints the title of an HTML document specified by a URL
+If uses defer to simplify closing the response body stream
 
 
 go run .\main.go http://www.google.com
