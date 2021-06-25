@@ -1,0 +1,5 @@
+readme
+25/06/2021
+
+go build .      
+.\learning.exe repo:golang/go is:open json decoder
