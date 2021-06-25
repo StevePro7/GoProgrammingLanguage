@@ -1,0 +1,48 @@
+readme
+25/06/2021
+
+Defer2 demonstrates a deferred call to runtime Stack during a panic
+
+
+go run main.go
+
+// stdout
+f(3)
+f(2)
+f(1)
+defer 1
+defer 2
+defer 3
+// stdout
+
+// stderr
+goroutine 1 [running]:
+main.printStack()
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:11 +0x65
+panic(0xed9560, 0xf83c60)
+        C:/Program Files/Go/src/runtime/panic.go:965 +0x1c7
+main.f(0x0)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:15 +0x1e8
+main.f(0x1)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.f(0x2)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.f(0x3)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.main()
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:22 +0x53
+panic: runtime error: integer divide by zero
+
+goroutine 1 [running]:
+main.f(0x0)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:15 +0x1e8
+main.f(0x1)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.f(0x2)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.f(0x3)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:17 +0x189
+main.main()
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer2/main.go:22 +0x53
+exit status 2
+// stderr

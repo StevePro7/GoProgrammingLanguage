@@ -1,0 +1,33 @@
+readme
+25/06/2021
+
+Defer1 demonstrates a deferred call being invoked during a panic
+
+
+go run main.go
+
+// stdout
+f(3)
+f(2)
+f(1)
+defer 1
+defer 2
+defer 3
+// stdout
+
+// stderr
+panic: runtime error: integer divide by zero
+
+goroutine 1 [running]:
+main.f(0x0)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer1/main.go:6 +0x1e8
+main.f(0x1)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer1/main.go:8 +0x189
+main.f(0x2)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer1/main.go:8 +0x189
+main.f(0x3)
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer1/main.go:8 +0x189
+main.main()
+        E:/GitHub/StevePro7/GoProgrammingLanguage/ch5/defer1/main.go:11 +0x31
+exit status 2
+// stderr
