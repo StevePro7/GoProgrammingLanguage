@@ -40,6 +40,7 @@ func main() {
 	// starting from the command line arguments
 	//breadthFirst(crawl, os.Args[1:])
 
+	//worklist := []string {"http://www.google.com"}
 	var worklist []string
 	worklist = append(worklist, "http://www.google.com")
 	breadthFirst(crawl, worklist)
