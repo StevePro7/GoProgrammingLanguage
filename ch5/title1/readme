@@ -1,0 +1,16 @@
+readme
+25/06/2021
+
+go run .\main.go http://www.google.com
+Google
+
+go run .\main.go http://steveproxna.blogspot.com
+SteveProXNA
+
+go run .\main.go http://www.hotmail.com
+Outlook – free personal email and calendar from Microsoft
+one-place-interface-icon-email
+one-place-interface-icon-calendar
+one-place-interface-icon-contacts
+one-place-interface-icon-tasks
+one-place-interface-icon-search
