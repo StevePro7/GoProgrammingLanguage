@@ -1,8 +1,5 @@
 readme
 25/06/2021
 
-findlinks1 prints the links in an HTML document read from standard input
+findlinks3 crawls the web stqarting with the URLs on the command line
 
-Terminal
-go get golang.org/x/net/html
-go mod tidy
