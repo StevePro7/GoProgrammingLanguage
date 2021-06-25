@@ -47,13 +47,21 @@ func init() {
 		Color color.RGBA
 	}
 
-	p := ColoredPoint(&Point{1, 2}, red)
-	q := ColoredPoint(&Point{5, 4}, blue)
+	p := ColoredPoint{&Point{1, 1}, red}
+	q := ColoredPoint{&Point{5, 4}, blue}
 	fmt.Println(p.Distance(*q.Point)) // "5"
-	q.Point = p.ColoredPoint          // p and q now share the same Point
+	q.Point = p.Point                 // p and q now share the same Point
 	p.ScaleBy(2)
+	fmt.Println(*p.Point, *q.Point) // "{2 2} {2 2}"
 }
 
 func main() {
-	fmt.Println("Hello there")
+	red := color.RGBA{255, 0, 0, 255}
+	blue := color.RGBA{0, 0, 255, 255}
+	var p = ColoredPoint{Point{1, 1}, red}
+	var q = ColoredPoint{Point{5, 4}, blue}
+	fmt.Println(p.Distance((q.Point))) // "5"
+	p.ScaleBy(2)
+	q.ScaleBy(2)
+	fmt.Println(p.Distance((q.Point))) // "10"
 }

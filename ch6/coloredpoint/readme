@@ -1,0 +1,12 @@
+readme
+25/06/2021
+
+go run .\main.go
+5
+func(main.Point, main.Point) float64
+{2 4}
+func(*main.Point, float64)
+5
+{2 2} {2 2}
+5
+10
