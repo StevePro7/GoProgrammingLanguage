@@ -1,0 +1,14 @@
+readme
+25/06/2021
+
+Title3 prints the title of an HTML document specified by a URL
+
+
+go run .\main.go http://www.google.com
+Google
+
+go run .\main.go http://steveproxna.blogspot.com
+SteveProXNA
+
+go run .\main.go http://www.hotmail.com
+title: multiple title elements
