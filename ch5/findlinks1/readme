@@ -1,0 +1,8 @@
+readme
+25/06/2021
+
+findlinks prints the links in an HTML document read from standard input
+
+Terminal
+go get golang.org/x/net/html
+go mod tidy
