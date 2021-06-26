@@ -5,5 +5,5 @@ Original source code can be found here: https://github.com/adonovan/gopl.io
 <br />
 Ch7 eval
 <br />
-Ch8 cake	chat
+Ch8 cake	chat	du*
 
