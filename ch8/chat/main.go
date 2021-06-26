@@ -13,7 +13,7 @@ type client chan<- string // an outgoing message channel
 var (
 	entering = make(chan client)
 	leaving  = make(chan client)
-	messages = make(chan client) // all incoming client messages
+	messages = make(chan string) // all incoming client messages
 )
 
 func broadcaster() {
