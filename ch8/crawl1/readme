@@ -1,6 +1,11 @@
 readme
 26/06/2021
 
+Crawl1 crawls web links starting with the command line arguments
+
+This version quickly exhausts available file descriptors
+due to excessive concurrent calls to links.Extract
+
 go run main.go
 fatal error: all goroutines are asleep - deadlock!
 
