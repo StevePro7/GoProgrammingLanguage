@@ -1,3 +1,4 @@
+*.html linguist-detectable=false
 *.go linguist-language=Go
 go.mod linguist-language=Go
 go.sum linguist-language=Go
