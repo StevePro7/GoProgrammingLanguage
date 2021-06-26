@@ -1,0 +1,8 @@
+readme
+26/06/2021
+
+Clock2 is a TCP server that periodically writes the time concurrently
+
+go run main.go
+
+Quarantine
