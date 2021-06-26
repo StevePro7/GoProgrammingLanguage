@@ -1,0 +1,15 @@
+readme
+26/06/2021
+
+Countdown implements the countdown for a rocket launch
+
+
+OUTPUT
+go run main.go
+Commencing countdown.  Press return to abort.
+Lift off!
+
+go run main.go
+Commencing countdown.  Press return to abort.
+
+Launch aborted

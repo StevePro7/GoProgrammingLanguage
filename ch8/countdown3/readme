@@ -1,0 +1,30 @@
+readme
+26/06/2021
+
+Countdown implements the countdown for a rocket launch
+
+IMPORTNANT
+note the ticker goroutine never terminates if the launch is aborted
+this is a "goroutine leak
+
+
+OUTPUT
+go run main.go
+Commencing countdown.  Press return to abort.
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Lift off!
+
+go run main.go
+Commencing countdown.  Press return to abort.
+10
+
+Launch aborted!
