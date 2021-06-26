@@ -1,0 +1,5 @@
+readme
+26/06/2021
+
+The thumbnail package produces thumbnail size images from
+larger images.  Only JPEG images are currently supported

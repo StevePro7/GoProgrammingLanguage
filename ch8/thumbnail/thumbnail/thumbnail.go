@@ -1,10 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 234.
-
-// The thumbnail package produces thumbnail-size images from
-// larger images.  Only JPEG images are currently supported.
 package thumbnail
 
 import (
@@ -17,9 +10,9 @@ import (
 	"strings"
 )
 
-// Image returns a thumbnail-size version of src.
+// Image returns a thumbnail sizes version of src
 func Image(src image.Image) image.Image {
-	// Compute thumbnail size, preserving aspect ratio.
+	// Compute thumbnail size preserving aspect ratio
 	xs := src.Bounds().Size().X
 	ys := src.Bounds().Size().Y
 	width, height := 128, 128
@@ -45,8 +38,8 @@ func Image(src image.Image) image.Image {
 }
 
 // ImageStream reads an image from r and
-// writes a thumbnail-size version of it to w.
-func ImageStream(w io.Writer, r io.Reader) error {
+// writes a thumbnail size version of it to w
+func ImageStream(w io.Writer, r io.ReadCloser) error {
 	src, _, err := image.Decode(r)
 	if err != nil {
 		return err
@@ -80,7 +73,7 @@ func ImageFile2(outfile, infile string) (err error) {
 // a thumbnail-size version of it in the same directory.
 // It returns the generated file name, e.g. "foo.thumb.jpeg".
 func ImageFile(infile string) (string, error) {
-	ext := filepath.Ext(infile) // e.g., ".jpg", ".JPEG"
+	ext := filepath.Ext(infile) // e.g. ".jpg", ".JPEG"
 	outfile := strings.TrimSuffix(infile, ext) + ".thumb" + ext
 	return outfile, ImageFile2(outfile, infile)
 }
