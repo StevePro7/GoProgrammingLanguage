@@ -1,0 +1,8 @@
+readme
+26/06/2021
+
+go run main.go
+fatal error: all goroutines are asleep - deadlock!
+
+go run main.go http://www.google.com
+go run main.go http://steveproxna.blogspot.com
