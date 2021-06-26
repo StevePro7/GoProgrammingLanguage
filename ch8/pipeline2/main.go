@@ -3,5 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello there")
+
+	naturals := make(chan int)
+	squares := make(chan int)
+
+	// Counter
+	go func() {
+		for x := 0; x <= 100; x++ {
+			naturals <- x
+		}
+		close(naturals)
+	}()
+
+	// Squarer
+	go func() {
+		for x := range naturals {
+			squares <- x * x
+		}
+		close(squares)
+	}()
+
+	// Print (in main goroutine)
+	for x := range squares {
+		fmt.Println(x)
+	}
 }

@@ -1,7 +1,8 @@
 readme
 26/06/2021
 
-Pipeline2 demonstrates an finite 3-stage pipeline
+Pipeline3 demonstrates an finite 3-stage pipeline
+with range, close, and unidirectional channel types
 
 0
 1 
