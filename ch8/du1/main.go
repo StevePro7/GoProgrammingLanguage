@@ -22,6 +22,7 @@ func main() {
 		for _, root := range roots {
 			walkDir(root, fileSizes)
 		}
+		close(fileSizes)
 	}()
 
 	// Print the results
@@ -30,7 +31,6 @@ func main() {
 		nfiles++
 		nbytes += size
 	}
-
 	printDiskUsage(nfiles, nbytes)
 }
 
@@ -58,6 +58,5 @@ func dirents(dir string) []os.FileInfo {
 		fmt.Fprintf(os.Stderr, "du1: %v\n", err)
 		return nil
 	}
-
 	return entries
 }
