@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"sync"
 	"testing"
 	"time"
 )
@@ -56,4 +57,24 @@ func Sequential(t *testing.T, m M) {
 		fmt.Printf("%s %s %d bytes\n",
 			url, time.Since(start), len(value.([]byte)))
 	}
+}
+
+m := memo.New(httpGetBody)
+func Concurrent(t *testing.T) {
+	var n sync.WaitGroup
+	for url := range incomingURLs() {
+		n.Add(1)
+		go func(url string) {
+			defer n.Done()
+			start := time.Now()
+			value, err := m.Get(url)
+			if err != nil {
+				log.Print(err)
+				return
+			}
+			fmt.Printf("%s %s %d bytes\n",
+				url, time.Since(start), len(value.([]byte)))
+		}(url)
+	}
+	n.Wait()
 }
