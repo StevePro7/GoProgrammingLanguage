@@ -2,7 +2,8 @@ readme
 27/06/2021
 
 Package memo provides a concurrency safe memoization of a function of type Func
-Concurrent requests are serialized by a Mutex
+Requests for different keys run concurrently
+Concurrent requests for the same key result in duplicate work
 
 Package memotest provides common functions for
 testing various designs of the memo package
