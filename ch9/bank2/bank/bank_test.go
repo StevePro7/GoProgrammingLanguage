@@ -14,6 +14,7 @@ func TestBank(t *testing.T) {
 		n.Add(1)
 		go func(amount int) {
 			bank.Deposit(amount)
+			n.Done()
 		}(i)
 	}
 	n.Wait()
