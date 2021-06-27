@@ -1,4 +1,7 @@
 readme
 27/06/2021
 
-The du2 command computes the disk usage of the files in a directory
+The du2 command computes the disk usage of the files in a directory.
+
+The du2 variant uses select and a time.Ticker
+to print the totals periodically if -v is set

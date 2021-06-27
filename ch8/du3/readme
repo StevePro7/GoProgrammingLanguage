@@ -1,0 +1,8 @@
+readme
+27/06/2021
+
+The du3 command computes the disk usage of the files in a directory.
+
+The du3 variant traverses all directories in parallel
+It uses a concurrency limiting counting semaphore
+to avoid opening too many files at once
