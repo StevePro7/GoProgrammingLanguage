@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"testing"
 
-	"gopl.io/ch9/bank1"
+	"learning/bank"
 )
 
 func TestBank(t *testing.T) {
@@ -26,11 +26,11 @@ func TestBank(t *testing.T) {
 		done <- struct{}{}
 	}()
 
-	// Wait for both transactions.
+	// Wait for both transactions
 	<-done
 	<-done
 
 	if got, want := bank.Balance(), 300; got != want {
-		t.Errorf("Balance = %d, want %d", got, want)
+		t.Errorf("balance = %d want %d", got, want)
 	}
 }
