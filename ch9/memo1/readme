@@ -5,3 +5,11 @@ Package memo provides a concurrency unsafe memoization of a function of type Fun
 
 Package memotest provides common functions for
 testing various designs of the memo package
+
+
+testing
+go test -v
+
+go test -run=TestConcurrent -race
+--- FAIL: TestConcurrent (1.03s)
+    testing.go:1093: race detected during execution of test
