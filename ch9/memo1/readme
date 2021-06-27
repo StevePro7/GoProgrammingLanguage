@@ -1,0 +1,7 @@
+readme
+27/06/2021
+
+Package memo provides a concurrency unsafe memoization of a function of type Func
+
+Package memotest provides common functions for
+testing various designs of the memo package
