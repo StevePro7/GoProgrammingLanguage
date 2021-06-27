@@ -1,13 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 234.
-
-// Package cake provides a simulation of
-// a concurrent cake shop with numerous parameters.
-//
-// Use this command to run the benchmarks:
-// 	$ go test -bench=. gopl.io/ch8/cake
 package cake
 
 import (
@@ -32,6 +22,14 @@ type Shop struct {
 
 type cake int
 
+// work blocks the calling goroutine for a period of time
+// that is normally distributed aroud d
+// with a standard deviation of stddev
+func work(d, stddev time.Duration) {
+	delay := d + time.Duration(rand.NormFloat64()*float64(stddev))
+	time.Sleep(delay)
+}
+
 func (s *Shop) baker(baked chan<- cake) {
 	for i := 0; i < s.Cakes; i++ {
 		c := cake(i)
@@ -48,9 +46,9 @@ func (s *Shop) icer(iced chan<- cake, baked <-chan cake) {
 	for c := range baked {
 		if s.Verbose {
 			fmt.Println("icing", c)
+			work(s.IceTime, s.IceStdDev)
+			iced <- c
 		}
-		work(s.IceTime, s.IceStdDev)
-		iced <- c
 	}
 }
 
@@ -67,7 +65,7 @@ func (s *Shop) inscriber(iced <-chan cake) {
 	}
 }
 
-// Work runs the simulation 'runs' times.
+// Work runs the simulation 'runs' times
 func (s *Shop) Work(runs int) {
 	for run := 0; run < runs; run++ {
 		baked := make(chan cake, s.BakeBuf)
@@ -78,12 +76,4 @@ func (s *Shop) Work(runs int) {
 		}
 		s.inscriber(iced)
 	}
-}
-
-// work blocks the calling goroutine for a period of time
-// that is normally distributed around d
-// with a standard deviation of stddev.
-func work(d, stddev time.Duration) {
-	delay := d + time.Duration(rand.NormFloat64()*float64(stddev))
-	time.Sleep(delay)
 }
