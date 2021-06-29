@@ -1,0 +1,9 @@
+readme
+29/06/2021
+
+Echo prints its line arguments
+
+
+Test
+run  with 
+go  test

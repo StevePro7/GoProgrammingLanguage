@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// Test of echo command.  Run with: go test gopl.io/ch11/echo
-
-//!+
 package main
 
 import (
@@ -27,19 +21,18 @@ func TestEcho(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		descr := fmt.Sprintf("echo(%v, %q, %q)",
+		descr := fmt.Sprintf("echo(%v, %q, %q",
 			test.newline, test.sep, test.args)
 
-		out = new(bytes.Buffer) // captured output
+		out = new(bytes.Buffer) // ccaptured output
 		if err := echo(test.newline, test.sep, test.args); err != nil {
 			t.Errorf("%s failed: %v", descr, err)
 			continue
 		}
+
 		got := out.(*bytes.Buffer).String()
 		if got != test.want {
 			t.Errorf("%s = %q, want %q", descr, got, test.want)
 		}
 	}
 }
-
-//!-
