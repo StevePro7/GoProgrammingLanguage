@@ -1,21 +1,14 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 package word
 
 import (
 	"fmt"
 	"math/rand"
+	"os"
+	"testing"
 	"time"
+	"unicode"
 )
 
-//!+bench
-
-import "testing"
-
-//!-bench
-
-//!+test
 func TestIsPalindrome(t *testing.T) {
 	var tests = []struct {
 		input string
@@ -42,41 +35,23 @@ func TestIsPalindrome(t *testing.T) {
 	}
 }
 
-//!-test
-
-//!+bench
+// Bench
 func BenchmarkIsPalindrome(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		IsPalindrome("A man, a plan, a canal: Panama")
 	}
 }
 
-//!-bench
-
-//!+example
-
+// Example
 func ExampleIsPalindrome() {
 	fmt.Println(IsPalindrome("A man, a plan, a canal: Panama"))
 	fmt.Println(IsPalindrome("palindrome"))
-	// Output:
-	// true
-	// false
 }
 
-//!-example
-
-/*
-//!+random
-import "math/rand"
-
-//!-random
-*/
-
-//!+random
-// randomPalindrome returns a palindrome whose length and contents
+// RandomePalindrome returns a palindrome whose length and contents
 // are derived from the pseudo-random number generator rng.
-func randomPalindrome(rng *rand.Rand) string {
-	n := rng.Intn(25) // random length up to 24
+func randomePalindrome(rng *rand.Rand) string {
+	n := rng.Intn(25) // randome length up to 24
 	runes := make([]rune, n)
 	for i := 0; i < (n+1)/2; i++ {
 		r := rune(rng.Intn(0x1000)) // random rune up to '\u0999'
@@ -86,31 +61,29 @@ func randomPalindrome(rng *rand.Rand) string {
 	return string(runes)
 }
 
-func TestRandomPalindromes(t *testing.T) {
-	// Initialize a pseudo-random number generator.
+func TestRandomPalindrome(t *testing.T) {
+	// Initialize a pseudo-random number generator
 	seed := time.Now().UTC().UnixNano()
 	t.Logf("Random seed: %d", seed)
 	rng := rand.New(rand.NewSource(seed))
 
 	for i := 0; i < 1000; i++ {
-		p := randomPalindrome(rng)
+		p := randomePalindrome(rng)
 		if !IsPalindrome(p) {
 			t.Errorf("IsPalindrome(%q) = false", p)
 		}
 	}
 }
 
-//!-random
-
-/*
-// Answer for Exercicse 11.1: Modify randomPalindrome to exercise
-// IsPalindrome's handling of punctuation and spaces.
+// Answer for Exercise 11.1
+// Modify randomPalindrome to exercise
+// IsPalindrome handling of punctuation nand spaces
 
 // WARNING: the conversion r -> upper -> lower doesn't preserve
-// the value of r in some cases, e.g., µ Μ, ſ S, ı I
+// the value of r in some cases, e.g., µ ?, ? S, i I
 
 // randomPalindrome returns a palindrome whose length and contents
-// are derived from the pseudo-random number generator rng.
+// are derived from the pseudo-random number generator rng
 func randomNoisyPalindrome(rng *rand.Rand) string {
 	n := rng.Intn(25) // random length up to 24
 	runes := make([]rune, n)
@@ -145,4 +118,3 @@ func TestRandomNoisyPalindromes(t *testing.T) {
 	}
 	fmt.Fprintf(os.Stderr, "fail = %d\n", n)
 }
-*/
