@@ -1,0 +1,13 @@
+readme
+03/07/2021
+
+Package format provides an Any function that can format any value
+
+cd test
+go test
+
+OUTPUT
+1
+1
+[]int64 0xc000014150
+[]time.Duration 0xc000014158
