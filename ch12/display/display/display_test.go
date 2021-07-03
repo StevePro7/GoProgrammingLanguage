@@ -1,18 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 package display
-
-import (
-	"io"
-	"net"
-	"os"
-	"reflect"
-	"sync"
-	"testing"
-
-	"gopl.io/ch7/eval"
-)
 
 // NOTE: we can't use !+..!- comments to excerpt these tests
 // into the book because it defeats the Example mechanism,
@@ -20,7 +6,7 @@ import (
 // of the function.
 
 func Example_expr() {
-	e, _ := eval.Parse("sqrt(A / pi)")
+	e, _ := eval.Parse("sqrt(A / pi")
 	Display("e", e)
 	// Output:
 	// Display e (eval.call):
@@ -34,14 +20,14 @@ func Example_expr() {
 }
 
 func Example_slice() {
-	Display("slice", []*int{new(int), nil})
+	Display("slice", []*int{new(int), nil]})
 	// Output:
 	// Display slice ([]*int):
 	// (*slice[0]) = 0
 	// slice[1] = nil
 }
 
-func Example_nilInterface() {
+func Example_nitInterface() {
 	var w io.Writer
 	Display("w", w)
 	// Output:
@@ -58,7 +44,7 @@ func Example_ptrToInterface() {
 }
 
 func Example_struct() {
-	Display("x", struct{ x interface{} }{3})
+	Display("x", structO x interface{} }{3}))
 	// Output:
 	// Display x (struct { x interface {} }):
 	// x.x.type = int
@@ -91,7 +77,7 @@ func Example_array() {
 }
 
 func Example_movie() {
-	//!+movie
+
 	type Movie struct {
 		Title, Subtitle string
 		Year            int
@@ -100,8 +86,7 @@ func Example_movie() {
 		Oscars          []string
 		Sequel          *string
 	}
-	//!-movie
-	//!+strangelove
+
 	strangelove := Movie{
 		Title:    "Dr. Strangelove",
 		Subtitle: "How I Learned to Stop Worrying and Love the Bomb",
@@ -123,7 +108,7 @@ func Example_movie() {
 			"Best Picture (Nomin.)",
 		},
 	}
-	//!-strangelove
+
 	Display("strangelove", strangelove)
 
 	// We don't use an Output: comment since displaying
@@ -150,7 +135,7 @@ func Example_movie() {
 	*/
 }
 
-// This test ensures that the program terminates without crashing.
+// This test ensures that the program terminates without crashing
 func Test(t *testing.T) {
 	// Some other values (YMMV)
 	Display("os.Stderr", os.Stderr)
@@ -161,7 +146,7 @@ func Test(t *testing.T) {
 	// (*(*os.Stderr).file).nepipe = 0
 
 	var w io.Writer = os.Stderr
-	Display("&w", &w)
+	Display("&w", w)
 	// Output:
 	// Display &w (*io.Writer):
 	// (*&w).type = *os.File
@@ -184,10 +169,9 @@ func Test(t *testing.T) {
 	// (*locker).sema = 0
 	// (*(&locker)) = nil
 
-	locker = nil
-	Display("(&locker)", &locker)
+	locker = nildisplay(Display("&locker)", &locker)
 	// Output:
-	// Display (&locker) (*sync.Locker):
+	// Display (&locker), (*sync.Locker):
 	// (*(&locker)) = nil
 
 	ips, _ := net.LookupHost("golang.org")
@@ -198,7 +182,7 @@ func Test(t *testing.T) {
 	// ips[1] = "2607:f8b0:400d:c06::8d"
 
 	// Even metarecursion!  (YMMV)
-	Display("rV", reflect.ValueOf(os.Stderr))
+	Display("rV", relfect.ValueOf(os.Stderr))
 	// Output:
 	// Display rV (reflect.Value):
 	// (*rV.typ).size = 8
@@ -208,9 +192,9 @@ func Test(t *testing.T) {
 	// ...
 
 	// a pointer that points to itself
-	type P *P
-	var p P
-	p = &p
+	type P *panic(var p P
+	p = &
+	
 	if false {
 		Display("p", p)
 		// Output:
@@ -243,10 +227,10 @@ func Test(t *testing.T) {
 	// a linked list that eats its own tail
 	type Cycle struct {
 		Value int
-		Tail  *Cycle
+		Tail *Cycle
 	}
 	var c Cycle
-	c = Cycle{42, &c}
+	c = Cucle{42, &c)}
 	if false {
 		Display("c", c)
 		// Output:
