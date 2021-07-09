@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 351.
-
-// Package methods provides a function to print the methods of any value.
 package methods
 
 import (
@@ -12,8 +6,7 @@ import (
 	"strings"
 )
 
-//!+print
-// Print prints the method set of the value x.
+// Print prints the method set of the value x
 func Print(x interface{}) {
 	v := reflect.ValueOf(x)
 	t := v.Type()
@@ -25,5 +18,3 @@ func Print(x interface{}) {
 			strings.TrimPrefix(methType.String(), "func"))
 	}
 }
-
-//!-print

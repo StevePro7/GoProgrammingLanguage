@@ -1,0 +1,7 @@
+readme
+05/07/2021
+
+Package sexpr provides a means for converting Go objects to and from S-expressions
+
+Pretty
+implements the algorithm described in 1979 Standford technical report "Pretty Printing"

@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 349.
-
-// Package params provides a reflection-based parser for URL parameters.
 package params
 
 import (
@@ -14,21 +8,21 @@ import (
 	"strings"
 )
 
-//!+Unpack
-
 // Unpack populates the fields of the struct pointed to by ptr
 // from the HTTP request parameters in req.
 func Unpack(req *http.Request, ptr interface{}) error {
+
 	if err := req.ParseForm(); err != nil {
 		return err
 	}
 
-	// Build map of fields keyed by effective name.
+	// Build map of fields keyed by effective name
 	fields := make(map[string]reflect.Value)
-	v := reflect.ValueOf(ptr).Elem() // the struct variable
+
+	v := reflect.ValueOf(ptr).Elem()		// the struct variable
 	for i := 0; i < v.NumField(); i++ {
-		fieldInfo := v.Type().Field(i) // a reflect.StructField
-		tag := fieldInfo.Tag           // a reflect.StructTag
+		fieldInfo := v.Type().Field(i)		// a reflect.StructField
+		tag := fieldInfo.Tag				// a reflect.StructTag
 		name := tag.Get("http")
 		if name == "" {
 			name = strings.ToLower(fieldInfo.Name)
@@ -36,11 +30,11 @@ func Unpack(req *http.Request, ptr interface{}) error {
 		fields[name] = v.Field(i)
 	}
 
-	// Update struct field for each parameter in the request.
+	// Update struct field for each parameter in the request
 	for name, values := range req.Form {
 		f := fields[name]
 		if !f.IsValid() {
-			continue // ignore unrecognized HTTP parameters
+			continue						// ignore unrecognized HTTP parameters
 		}
 		for _, value := range values {
 			if f.Kind() == reflect.Slice {
@@ -59,9 +53,6 @@ func Unpack(req *http.Request, ptr interface{}) error {
 	return nil
 }
 
-//!-Unpack
-
-//!+populate
 func populate(v reflect.Value, value string) error {
 	switch v.Kind() {
 	case reflect.String:
@@ -84,7 +75,6 @@ func populate(v reflect.Value, value string) error {
 	default:
 		return fmt.Errorf("unsupported kind %s", v.Type())
 	}
+
 	return nil
 }
-
-//!-populate

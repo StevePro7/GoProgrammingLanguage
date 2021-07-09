@@ -1,0 +1,7 @@
+readme
+04/07/2021
+
+Search is a demo of the params.Unpack function
+
+curl http://localhost:3000/search
+curl http://localhost:3000/search?x=true
