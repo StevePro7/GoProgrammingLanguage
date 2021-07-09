@@ -23,6 +23,6 @@ type printer struct {
 func (p *printer) string(str string) {
 	tok := &token{kind: 's', str: str, size: len(str)}
 	if len(p.stack) == 0 {
-		p
+		p.
 	}
 }
