@@ -1,0 +1,11 @@
+readme
+09/07/2021
+
+Package unsafeptr demonstrates basic use of unsafe.Pointer
+
+
+Important
+subtly incorrect
+tmp := uintptr(unsafe.Pointer(&x)) + unsafe.Offsetof(x.b)
+pb := (*int16)(unsafe.Pointer(tmp))
+*pb = 42

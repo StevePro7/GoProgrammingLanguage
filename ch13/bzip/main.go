@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bytes"
+	"io"
+)
 
 func main() {
-	fmt.Println("Hello there")
+	var _ io.Writer = new(bytes.Buffer)
 }
