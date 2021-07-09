@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 359.
-
-// Package equal provides a deep equivalence relation for arbitrary values.
 package equal
 
 import (
@@ -11,7 +5,11 @@ import (
 	"unsafe"
 )
 
-//!+
+type comparison struct {
+	x, y unsafe.Pointer
+	t    reflect.Type
+}
+
 func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 	if !x.IsValid() || !y.IsValid() {
 		return x.IsValid() == y.IsValid()
@@ -20,10 +18,8 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 		return false
 	}
 
-	// ...cycle check omitted (shown later)...
+	// cycle check omitted
 
-	//!-
-	//!+cyclecheck
 	// cycle check
 	if x.CanAddr() && y.CanAddr() {
 		xptr := unsafe.Pointer(x.UnsafeAddr())
@@ -37,8 +33,6 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 		}
 		seen[c] = true
 	}
-	//!-cyclecheck
-	//!+
 	switch x.Kind() {
 	case reflect.Bool:
 		return x.Bool() == y.Bool()
@@ -46,9 +40,7 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 	case reflect.String:
 		return x.String() == y.String()
 
-	// ...numeric cases omitted for brevity...
-
-	//!-
+	// numeric cases omitted for brevity
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
 		reflect.Int64:
 		return x.Int() == y.Int()
@@ -62,7 +54,7 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 
 	case reflect.Complex64, reflect.Complex128:
 		return x.Complex() == y.Complex()
-	//!+
+
 	case reflect.Chan, reflect.UnsafePointer, reflect.Func:
 		return x.Pointer() == y.Pointer()
 
@@ -80,8 +72,7 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 		}
 		return true
 
-	// ...struct and map cases omitted for brevity...
-	//!-
+	// struct and map cases omitted for brevity
 	case reflect.Struct:
 		for i, n := 0, x.NumField(); i < n; i++ {
 			if !equal(x.Field(i), y.Field(i), seen) {
@@ -100,28 +91,15 @@ func equal(x, y reflect.Value, seen map[comparison]bool) bool {
 			}
 		}
 		return true
-		//!+
 	}
+
 	panic("unreachable")
 }
 
-//!-
-
-//!+comparison
-// Equal reports whether x and y are deeply equal.
-//!-comparison
-//
-// Map keys are always compared with ==, not deeply.
-// (This matters for keys containing pointers or interfaces.)
-//!+comparison
+// Equal reports whether x and y are deeply equal
+// Map keys are always compared with --, not deeply.
+// (This matters for keys containing pointers or interfaces
 func Equal(x, y interface{}) bool {
 	seen := make(map[comparison]bool)
 	return equal(reflect.ValueOf(x), reflect.ValueOf(y), seen)
 }
-
-type comparison struct {
-	x, y unsafe.Pointer
-	t    reflect.Type
-}
-
-//!-comparison
